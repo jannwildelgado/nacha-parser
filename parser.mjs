@@ -229,18 +229,6 @@ export class NACHAReader {
 
   /** @param {EntryDetail} params  */
   #set_entry_detail(params) {
-    assert.strictEqual(params.recordTypeCode.length, 1, 'Entry Detail: invalid length record type code')
-    assert.strictEqual(params.transactionCode.length, 2, 'Entry Detail: invalid length transaction code')
-    assert.strictEqual(params.receivingDFIIdentification.length, 8, 'Entry Detail: invalid length receiving DFI identification')
-    assert.strictEqual(params.checkDigit.length, 1, 'Entry Detail: invalid length check digit')
-    assert.strictEqual(params.DFIAccountNumber.length, 17, 'Entry Detail: invalid length DFI account number')
-    assert.strictEqual(params.amount.length, 10, 'Entry Detail: invalid length amount')
-    assert.strictEqual(params.individualIdentificationNumber.length, 15, 'Entry Detail: invalid length individual identification number')
-    assert.strictEqual(params.individualName.length, 22, 'Entry Detail: invalid length individual name')
-    assert.strictEqual(params.discretionaryData.length, 2, 'Entry Detail: invalid length discretionary data')
-    assert.strictEqual(params.addendaRecordIndicator.length, 1, 'Entry Detail: invalid length addenda record indicator')
-    assert.strictEqual(params.traceNumber.length, 15, 'Entry Detail: invalid length trace number')
-
     this.#ed.push(params)
   }
 
@@ -251,18 +239,6 @@ export class NACHAReader {
 
   /** @param {BatchControl} params  */
   #set_batch_control(params) {
-    assert.strictEqual(params.recordTypeCode.length, 1, 'Batch Control: invalid length record type code')
-    assert.strictEqual(params.serviceClassCode.length, 3, 'Batch Control: invalid length service class code')
-    assert.strictEqual(params.entryAddendaCount.length, 6, 'Batch Control: invalid length entry addenda count')
-    assert.strictEqual(params.entryHash.length, 10, 'Batch Control: invalid length entry hash')
-    assert.strictEqual(params.totalDebitEntryDollarAmount.length, 12, 'Batch Control: invalid length total debit entry dollar amount')
-    assert.strictEqual(params.totalCreditEntryDollarAmount.length, 12, 'Batch Control: invalid length total credit entry dollar amount')
-    assert.strictEqual(params.companyIdentification.length, 10, 'Batch Control: invalid length company identification')
-    assert.strictEqual(params.messageAuthenticationCode.length, 19, 'Batch Control: invalid length message authentication code')
-    assert.strictEqual(params.reserved.length, 6, 'Batch Control: invalid length reserved')
-    assert.strictEqual(params.originatingDFIIdentification.length, 8, 'Batch Control: invalid length originating DFI identification')
-    assert.strictEqual(params.batchNumber.length, 7, 'Batch Control: invalid length batch number')
-
     this.#bc = params
   }
 
@@ -273,21 +249,10 @@ export class NACHAReader {
 
   /** @param {FileControl} params  */
   #set_file_control(params) {
-    assert.strictEqual(params.recordTypeCode.length, 1, 'File Control: invalid length record type code')
-    assert.strictEqual(params.batchCount.length, 6, 'File Control: invalid length batch count')
-    assert.strictEqual(params.blockCount.length, 6, 'File Control: invalid length block count')
-    assert.strictEqual(params.entryAddendaCount.length, 8, 'File Control: invalid length entry addenda count')
-    assert.strictEqual(params.entryHash.length, 10, 'File Control: invalid length entry hash')
-    assert.strictEqual(params.totalDebitEntryDollarAmount.length, 12, 'File Control: invalid length total debit entry dollar amount')
-    assert.strictEqual(params.totalCreditEntryDollarAmount.length, 12, 'File Control: invalid length total credit entry dollar amount')
-    assert.strictEqual(params.reserved.length, 39, 'File Control: invalid length reserved')
-
-    this.#fc = params
+   this.#fc = params
   }
 
-  /**
-    * @returns {FileControl|null}
-    * */
+  /** @returns {FileControl|null} */
   get_file_control() {
     return this.#fc
   }
